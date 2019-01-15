@@ -17,7 +17,7 @@ public class Schleife {
 		//Zahl ist 99
 		//...
 		//Zahl ist 1
-		for (int i = 1; i < 101; i = i+1) {
+		for (int i = 100; i > 0; i = i-1) {
 			System.out.println("Zahl ist " + i);
 		}
 	}
