@@ -5,12 +5,15 @@ public class Bubblesort {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-	int[] k= {3,1,9,5,2,8,6,5};
+	int[] f= {3,1,9,5,2,8,6,5};
 	//
-	for (int n = 0; n< k.length; n++) {
-		for(int i=1; i<k.length;i++) {
-	  for (n=k.length; n>1; --n){ 
-		    for (i=0; i<n-1; ++i){ 
-		      if (k[i] > k[i+1]){ 
-		        k.swap(i, i+1)
-}}}}}}}
+	for (int n = f.length; n>1; --n) {
+		for(int i=0; i<n-1;i++) {
+	  if (f[i]>f[i+1]){ 
+		    int help = f[i];
+		    f[i]=f[i+1];
+		    f[i+1]=help;
+}}}
+	for(int i : f)
+		System.out.println(i);
+}}
