@@ -16,21 +16,23 @@ if (l > r) {
        quicksort(teiler+1, r); 
 } 
 } 
-private static int teile(int l, int r) {  
+private static int teiler(l, r)
+teiler = teile
+int teile(int l, int r){  
 int i = l ; 
 int j = r - 1;
-int pivot = z[r];
+int pivot = z.length[r];
 //
-do { 
-if (i < j)   { 
+do {
+if (i < j)   {
+	while(j<pivot)
 } 
 } while (i < j); 
 		  if (z[i]> pivot){ 
 			    int help = z[i];
 			    z[i]=z[j+1];
 			    z[i+1]=help;
-		  
         return i; 
 } 
 } 
-}
+}	
