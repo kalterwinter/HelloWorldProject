@@ -29,6 +29,12 @@ public class MyFirstGUIWindow {
 	private Label hausnummerL;
 	private Label plzL;
 	private Label ortL;
+	private Label VornameOut;
+	private Label NachnameOut;
+	private Label StrasseOut;
+	private Label HausnummerOut;
+	private Label PlzOut;
+	private Label OrtOut;
 
 	/**
 	 * Launch the application.
@@ -80,6 +86,13 @@ public class MyFirstGUIWindow {
 				System.out.println(hausnummerTF.getText());
 				System.out.println(plzTF.getText());
 				System.out.println(ortTF.getText());
+				//
+				getVornameOut().setText(getVornameTF().getText());
+				getNachnameOut().setText(getNachnameTF().getText());
+				getStrasseOut().setText(getStrasseTF().getText());
+				getHausnummerOut().setText(getHausnummerTF().getText());
+				getplzOut().setText(getPlzTF().getText());
+				getOrtOut().setText(getOrtTF().getText());
 			}
 		});
 		btnNewButton_1.setBounds(41, 10, 75, 25);
@@ -97,6 +110,7 @@ public class MyFirstGUIWindow {
 		btnAbbrechen.setText("Abbrechen");
 		
 		vornameTF = new Text(shlFrWindow, SWT.BORDER);
+		vornameTF.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
 		vornameTF.setBounds(142, 59, 142, 21);
 		
 		nachnameTF = new Text(shlFrWindow, SWT.BORDER);
@@ -151,14 +165,77 @@ public class MyFirstGUIWindow {
 		ortL.setText("Ort");
 		
 		Composite composite = new Composite(shlFrWindow, SWT.NONE);
-		composite.setBackgroundImage(SWTResourceManager.getImage("\\\\kk-gym-pfs\\profiledataschueler\\rafael.winter\\Documents\\Eigene Bilder\\Marelli_logo.png"));
+		composite.setBackgroundImage(SWTResourceManager.getImage("C:\\Users\\rafael.winter\\Downloads\\2557e7b05283907.jpg"));
 		composite.addMouseMoveListener(new MouseMoveListener() {
 			public void mouseMove(MouseEvent me) {
 				System.out.println(me.x + "/" + me.y);
 			}
 		});
-		composite.setBounds(290, 181, 134, 70);
+		composite.setBounds(312, 10, 112, 36);
+		
+		VornameOut = new Label(shlFrWindow, SWT.NONE);
+		VornameOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		VornameOut.setBounds(312, 59, 112, 21);
+		
+		NachnameOut = new Label(shlFrWindow, SWT.NONE);
+		NachnameOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		NachnameOut.setBounds(312, 86, 112, 21);
+		
+		StrasseOut = new Label(shlFrWindow, SWT.NONE);
+		StrasseOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		StrasseOut.setBounds(312, 113, 112, 21);
+		
+		HausnummerOut = new Label(shlFrWindow, SWT.NONE);
+		HausnummerOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		HausnummerOut.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		HausnummerOut.setBounds(312, 140, 112, 21);
+		
+		PlzOut = new Label(shlFrWindow, SWT.NONE);
+		PlzOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		PlzOut.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		PlzOut.setBounds(312, 167, 112, 21);
+		
+		OrtOut = new Label(shlFrWindow, SWT.NONE);
+		OrtOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
+		OrtOut.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
+		OrtOut.setBounds(312, 194, 112, 21);
 		shlFrWindow.setTabList(new Control[]{vornameTF, nachnameTF, strasseTF, hausnummerTF, plzTF, ortTF, btnNewButton_1});
 
+	}
+	public Text getVornameTF() {
+		return vornameTF;
+	}
+	public Text getNachnameTF() {
+		return nachnameTF;
+	}
+	public Label getVornameOut() {
+		return VornameOut;
+	}
+	public Label getNachnameOut() {
+		return NachnameOut;
+	}
+	public Label getHausnummerOut() {
+		return HausnummerOut;
+	}
+	public Label getplzOut() {
+		return PlzOut;
+	}
+	public Label getOrtOut() {
+		return OrtOut;
+	}
+	public Label getStrasseOut() {
+		return StrasseOut;
+	}
+	public Text getStrasseTF() {
+		return strasseTF;
+	}
+	public Text getHausnummerTF() {
+		return hausnummerTF;
+	}
+	public Text getPlzTF() {
+		return plzTF;
+	}
+	public Text getOrtTF() {
+		return ortTF;
 	}
 }
