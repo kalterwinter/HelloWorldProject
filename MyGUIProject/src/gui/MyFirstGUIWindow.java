@@ -9,6 +9,12 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import data.Person;
+
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -35,6 +41,7 @@ public class MyFirstGUIWindow {
 	private Label HausnummerOut;
 	private Label PlzOut;
 	private Label OrtOut;
+	private Button btnJson;
 
 	/**
 	 * Launch the application.
@@ -93,6 +100,21 @@ public class MyFirstGUIWindow {
 				getHausnummerOut().setText(getHausnummerTF().getText());
 				getplzOut().setText(getPlzTF().getText());
 				getOrtOut().setText(getOrtTF().getText());
+				//
+				Person p1; // Variablen Definition
+				p1 = new Person(); // Instanzierung
+				//
+				p1.setVorname(getVornameTF().getText());
+				p1.setNachname(getNachnameTF().getText());
+				//
+				System.out.println(p1);
+				//
+				Person.getListe().add(p1);
+				//
+				System.out.println(Person.getListe());
+				// alle felder loeschen
+				getVornameTF().setText("");
+				getNachnameTF().setText("");
 			}
 		});
 		btnNewButton_1.setBounds(41, 10, 75, 25);
@@ -199,6 +221,18 @@ public class MyFirstGUIWindow {
 		OrtOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
 		OrtOut.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		OrtOut.setBounds(312, 194, 112, 21);
+		
+		btnJson = new Button(shlFrWindow, SWT.NONE);
+		btnJson.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				//
+				System.out.print(gson.toJson(Person.getListe()));
+			}
+		});
+		btnJson.setBounds(203, 10, 75, 25);
+		btnJson.setText("Json");
 		shlFrWindow.setTabList(new Control[]{vornameTF, nachnameTF, strasseTF, hausnummerTF, plzTF, ortTF, btnNewButton_1});
 
 	}
