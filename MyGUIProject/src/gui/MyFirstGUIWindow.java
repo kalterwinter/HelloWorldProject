@@ -1,8 +1,14 @@
 package gui;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -117,7 +123,7 @@ public class MyFirstGUIWindow {
 				getNachnameTF().setText("");
 			}
 		});
-		btnNewButton_1.setBounds(41, 10, 75, 25);
+		btnNewButton_1.setBounds(10, 10, 75, 25);
 		btnNewButton_1.setText("My Button");
 		
 		Button btnAbbrechen = new Button(shlFrWindow, SWT.NONE);
@@ -128,7 +134,7 @@ public class MyFirstGUIWindow {
 				System.exit(0);
 			}
 		});
-		btnAbbrechen.setBounds(122, 10, 75, 25);
+		btnAbbrechen.setBounds(91, 10, 75, 25);
 		btnAbbrechen.setText("Abbrechen");
 		
 		vornameTF = new Text(shlFrWindow, SWT.BORDER);
@@ -193,7 +199,7 @@ public class MyFirstGUIWindow {
 				System.out.println(me.x + "/" + me.y);
 			}
 		});
-		composite.setBounds(312, 10, 112, 36);
+		composite.setBounds(334, 10, 91, 36);
 		
 		VornameOut = new Label(shlFrWindow, SWT.NONE);
 		VornameOut.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_HIGHLIGHT_SHADOW));
@@ -228,11 +234,41 @@ public class MyFirstGUIWindow {
 			public void widgetSelected(SelectionEvent e) {
 				Gson gson = new GsonBuilder().setPrettyPrinting().create();
 				//
-				System.out.print(gson.toJson(Person.getListe()));
+				//System.out.print(gson.toJson(Person.getListe()));
+				try {
+					File jsonFile = File.createTempFile("wpfinf-json-",".humptydumpty");
+					FileWriter fw = new FileWriter(jsonFile);
+					//
+					gson.toJson(Person.getListe(), fw);
+					//
+					fw.flush();
+					fw.close();
+					//
+					//explorer öffnen
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
-		btnJson.setBounds(203, 10, 75, 25);
+		btnJson.setBounds(172, 10, 75, 25);
 		btnJson.setText("Json");
+		
+		Button btnLoad = new Button(shlFrWindow, SWT.NONE);
+		btnLoad.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog fd = new FileDialog(shlFrWindow,SWT.OPEN);
+				fd.setFileName("WPF-JSON");
+				fd.setFilterExtensions(new String[] {".humptydumpty"});
+				fd.setFilterPath("%TEMP%");
+				//
+				fd.open();
+			}
+		});
+		btnLoad.setBounds(253, 10, 75, 25);
+		btnLoad.setText("Load");
 		shlFrWindow.setTabList(new Control[]{vornameTF, nachnameTF, strasseTF, hausnummerTF, plzTF, ortTF, btnNewButton_1});
 
 	}
